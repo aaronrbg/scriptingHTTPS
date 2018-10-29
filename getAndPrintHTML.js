@@ -9,13 +9,14 @@ var requestOptions = {
 https.get(requestOptions, function(response) {
   response.setEncoding('utf8');
 
+  output = ''
+
   response.on('data', function(data) {
-    console.log('Chunk Received. Length:', data.length);
-    console.log('\n' + data + '\n');
+    output += data; 
   });
 
   response.on('end', function() {
-    console.log('Response stream complete.');
+    console.log(output);
   });
 
 });
